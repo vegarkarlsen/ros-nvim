@@ -44,7 +44,8 @@ function IROSShellEnvironment:source_ws(ws_path)
 
   local source_command = "source " .. ws_path .. "/setup.bash"
   local command = { set_vars, source_command, get_vars }
-  local command_string = "bash -c '" .. table.concat(command, ";") .. "'"
+  -- local command_string = "bash -c '" .. table.concat(command, ";") .. "'"
+  local command_string = "docker exec -it ros-noetic-container bash -c '" .. table.concat(command, ";") .. "'"
 
   local result = vim.fn.system(command_string)
 
